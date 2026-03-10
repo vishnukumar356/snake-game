@@ -1,0 +1,13 @@
+# Python Snake Game dependency
+# Install with:  pip install pygame
+#
+# NOTE: pygame currently supports Python 3.8 – 3.12.
+# If you are on Python 3.13+, install Python 3.12 from python.org
+# and create a virtual environment:
+#   py -3.12 -m venv venv
+#   venv\Scripts\activate
+#   pip install -r requirements.txt
+#   python snake.py
+
+pygame>=2.1.0
+

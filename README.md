@@ -1,26 +1,34 @@
 # 🐍 Snake Game
 
-A simple, fully playable Snake game built with **vanilla HTML, CSS and JavaScript** — no frameworks, no dependencies. Just open `index.html` in any browser and play!
+A simple, fully playable Snake game built with **Python** and **pygame** — no web browser needed. Run it directly from your terminal!
 
 ---
 
 ## 🚀 How to Run
 
-1. Clone or download this repository.
-2. Open `index.html` in any modern web browser (Chrome, Firefox, Edge, Safari).
-3. Click **▶ Start** and use the arrow keys (or on-screen buttons) to play.
+### 1. Install Python
+Make sure you have **Python 3.8 – 3.12** installed from [python.org](https://www.python.org/downloads/).
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the game
+```bash
+python snake.py
+```
 
 ---
 
 ## 🕹️ Controls
 
-| Key / Button | Action |
-|---|---|
-| `Arrow Up / Down / Left / Right` | Change direction |
-| `Space` | Pause / Resume |
-| ▶ Start | Start a new game |
-| ⏸ Pause | Pause / Resume |
-| 🔄 Restart | Restart immediately |
+| Key          | Action          |
+|--------------|-----------------|
+| `Arrow Keys` | Change direction|
+| `Space`      | Pause / Resume  |
+| `Enter`      | Start / Restart |
+| `Q` / `Esc`  | Quit the game   |
 
 ---
 
@@ -28,63 +36,70 @@ A simple, fully playable Snake game built with **vanilla HTML, CSS and JavaScrip
 
 ```
 snake-game/
-├── index.html   ← Page structure (canvas, buttons, scoreboard)
-├── style.css    ← Visual styling (dark theme, layout)
-├── game.js      ← All game logic (heavily commented)
-└── README.md    ← This file
+├── snake.py          ← All game logic (heavily commented)
+├── requirements.txt  ← Python dependencies (pygame)
+└── README.md         ← This file
 ```
 
 ---
 
 ## 🧠 Programming Concepts Explained
 
-The source code in `game.js` is **heavily commented** to teach the key concepts. Here is a summary:
+The source code in `snake.py` is **heavily commented** to teach the key concepts:
 
-### 1. Canvas & 2D Rendering
-The game draws every frame onto an HTML `<canvas>` element using the **Canvas 2D API** (`ctx.fillRect`, `ctx.arc`, etc.). The canvas is divided into a grid of 20×20 cells.
+### 1. pygame Setup & Window
+`pygame.init()` starts all pygame sub-systems. A window is created with `pygame.display.set_mode()`.
 
 ### 2. Game Loop
-`setInterval(tick, 150)` calls the `tick()` function every 150 ms. Each tick:
-- Updates the game state (`moveSnake`)
-- Re-renders the canvas (`draw`)
+A `while True` loop runs continuously. `clock.tick(FPS)` caps the speed to a fixed number of frames per second.
 
-This is the fundamental **game loop** pattern used in almost every game engine.
-
-### 3. Snake as an Array
-The snake is stored as an **array of `{x, y}` objects**:
-```js
-[ {x:10, y:10}, {x:9, y:10}, {x:8, y:10} ]
-  ^--- HEAD
+### 3. Snake Data Structure
+The snake is a **Python list** of `(col, row)` tuples. Index `0` is always the head:
+```python
+snake = [(10, 10), (9, 10), (8, 10)]
+#         ^--- HEAD
 ```
-- **Move forward** → `unshift` a new head + `pop` the tail.
-- **Eat food** → `unshift` a new head, skip the `pop` (snake grows).
 
-### 4. Direction Buffering
-A `nextDir` variable stores the player's latest key press. It is only applied at the **start of each tick**, preventing the snake from reversing into itself mid-tick.
+### 4. Movement Logic
+Every tick:
+- Calculate new head from current direction
+- `insert(0, new_head)` — add new head at the front
+- `pop()` — remove the tail (skip this step when food is eaten → snake grows)
 
 ### 5. Collision Detection
-Two types are checked every tick:
-- **Wall**: is the new head outside the grid boundaries?
-- **Self**: does `Array.some()` find any segment matching the new head's coordinates?
+- **Wall collision** — head goes outside grid bounds → Game Over
+- **Self collision** — head position exists elsewhere in the list → Game Over
 
 ### 6. Food Spawning
-A random grid cell is picked in a `do...while` loop, retrying until the chosen cell does not overlap any snake segment.
+`random.choice()` picks a free grid cell that is not occupied by the snake.
 
 ### 7. Score & High Score
-Score increases by 10 each time food is eaten. High score is kept in a variable for the whole browser session.
+Score increases each time food is eaten. High score is tracked in memory for the session.
 
 ### 8. Game States
-The game has four logical states managed with boolean flags:
-`idle` → `running` ↔ `paused` → `game over` → `idle`
+The game uses simple string constants as state names:
+```python
+STATE_START    = 'START'
+STATE_RUNNING  = 'RUNNING'
+STATE_PAUSED   = 'PAUSED'
+STATE_GAME_OVER= 'GAME_OVER'
+```
+
+### 9. Drawing / Rendering
+`pygame.draw.rect()` draws every grid cell. The snake head, body, food, and UI panels are all drawn each frame.
+
+### 10. Keyboard Input
+`pygame.event.get()` collects all events each frame. `KEYDOWN` events are checked to handle direction changes and state transitions.
 
 ---
 
-## 📸 Preview
+## 📦 Requirements
 
-> Dark-themed board with a teal snake and red food. Score and high-score are shown above the canvas.
+| Package | Version  |
+|---------|----------|
+| pygame  | >= 2.1.0 |
 
----
-
-## 📜 License
-
-MIT — free to use, modify, and distribute.
+Install via:
+```bash
+pip install pygame
+```
