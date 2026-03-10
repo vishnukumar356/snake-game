@@ -7,7 +7,7 @@ A simple, fully playable Snake game built with **Python** and **pygame** — no 
 ## 🚀 How to Run
 
 ### 1. Install Python
-Make sure you have **Python 3.8 – 3.12** installed from [python.org](https://www.python.org/downloads/).
+Make sure you have **Python 3.8 or newer** (including 3.14+) installed from [python.org](https://www.python.org/downloads/).
 
 ### 2. Install dependencies
 ```bash
@@ -95,11 +95,11 @@ STATE_GAME_OVER= 'GAME_OVER'
 
 ## 📦 Requirements
 
-| Package | Version  |
-|---------|----------|
-| pygame  | >= 2.1.0 |
+| Package   | Version  |
+|-----------|----------|
+| pygame-ce | >= 2.5.0 |
 
 Install via:
 ```bash
-pip install pygame
+pip install pygame-ce
 ```

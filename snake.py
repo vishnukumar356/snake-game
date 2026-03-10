@@ -2,7 +2,7 @@
 #  Snake Game — snake.py  (Python version using pygame)
 #
 #  Run:  python snake.py
-#  Requires: pip install pygame   (Python 3.8 – 3.12 recommended)
+#  Requires: pip install pygame-ce   (supports Python 3.8 – 3.14+)
 #
 #  Concepts covered (see comments throughout):
 #    1.  pygame setup & the main window
