@@ -1,0 +1,106 @@
+/* ── Reset & Base ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a1a2e;
+  color: #eaeaea;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ── Layout ── */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #4ecca3;
+  letter-spacing: 2px;
+}
+
+/* ── Scoreboard ── */
+.scoreboard {
+  display: flex;
+  gap: 32px;
+  font-size: 1.1rem;
+}
+
+.scoreboard strong {
+  color: #4ecca3;
+}
+
+/* ── Canvas ── */
+#gameCanvas {
+  border: 3px solid #4ecca3;
+  border-radius: 6px;
+  background: #16213e;
+  display: block;
+}
+
+/* ── Buttons ── */
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  background: #16213e;
+  color: #4ecca3;
+  border: 2px solid #4ecca3;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: #4ecca3;
+  color: #1a1a2e;
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── On-screen arrow keys ── */
+.arrow-keys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow-row {
+  display: flex;
+  gap: 4px;
+}
+
+.arrow-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Hint ── */
+.hint {
+  font-size: 0.82rem;
+  color: #888;
+}
+
