@@ -25,11 +25,11 @@ import sys      # for sys.exit()
 # ── 1. CONSTANTS ─────────────────────────────────────────────────
 # Using UPPERCASE names for values that never change is a Python convention.
 
-CELL_SIZE   = 20          # pixels per grid cell
-COLS        = 20          # number of columns
-ROWS        = 20          # number of rows
-WIDTH       = COLS * CELL_SIZE    # 400 px
-HEIGHT      = ROWS * CELL_SIZE    # 400 px
+CELL_SIZE   = 30          # pixels per grid cell  (increase to make the board bigger)
+COLS        = 30          # number of columns
+ROWS        = 30          # number of rows
+WIDTH       = COLS * CELL_SIZE    # 900 px
+HEIGHT      = ROWS * CELL_SIZE    # 900 px
 SPEED_FPS   = 8           # frames (ticks) per second  ← controls game speed
 INFO_HEIGHT = 60          # extra pixels above the board for score display
 
